@@ -2,6 +2,13 @@
 
 ![Github Actions Status](https://github.com/joseeliaschavez/java-rest-api-template/actions/workflows/gradle.yml/badge.svg?branch=develop&event=push)
 
+![Java JDK 17](https://img.shields.io/badge/Java%20JDK%2017-orange?style=for-the-badge&logo=openjdk&logoColor=white)
+![SpringBoot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![H2 Database](https://img.shields.io/badge/H2%20Database-007396?style=for-the-badge&logo=h2database&logoColor=white)
+![Spotless](https://img.shields.io/badge/Linting-Spotless-007396?style=for-the-badge&logoColor=white)
+![JaCoCo](https://img.shields.io/badge/Coverage-JaCoCo-007396?style=for-the-badge&logo=jacoco&logoColor=white)
+![WireMock](https://img.shields.io/badge/Testing-WireMock-007396?style=for-the-badge&logoColor=white)
+
 A template showcasing best practices for implementing a REST API in Java SpringBoot.
 
 The template showcases building a REST API using the movie industry as the domain.
