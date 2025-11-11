@@ -1,18 +1,21 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.1.0'
-	id 'io.spring.dependency-management' version '1.1.0'
-	id "com.diffplug.spotless" version "6.19.0"
+	id 'org.springframework.boot' version '3.3.+'
+	id 'io.spring.dependency-management' version '1.1.+'
+	id "com.diffplug.spotless" version "6.+"
+	id 'com.github.spotbugs' version '6.+'
+	id 'pmd'
 	id 'jacoco'
 }
 
 apply from: 'gradle/spotless.gradle'
+apply from: 'gradle/spotbugs.gradle'
+apply from: 'gradle/pmd.gradle'
 apply from: 'gradle/jacoco.gradle'
 apply from: 'gradle/integration.gradle'
 
-group = 'com.slalombuild'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+group = 'com.rangerforge'
+version = '1.0.0'
 
 configurations {
 	compileOnly {
@@ -20,28 +23,29 @@ configurations {
 	}
 }
 
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
 repositories {
 	mavenCentral()
 }
 
-ext {
-	mapstructVersion = "1.5.5.Final"
-}
-
 dependencies {
 	// Spring Dependencies
-	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.+'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.+'
-	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.+'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.+'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux:3.1.+'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.+'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.3.+'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.3.+'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.3.+'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux:3.3.+'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.+'
 
 	// Uncomment if you wish to use Docker Compose on local application startup
 	//developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 
 	// OpenAPI Auto-Generated Documentation
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.+'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.+'
 
 	// Mock DB
 	implementation 'com.h2database:h2'
@@ -57,14 +61,17 @@ dependencies {
 
 	// Unit testing
 	testImplementation 'org.mockito:mockito-core:5.+'
-	testImplementation 'org.instancio:instancio-junit:2.+' // Creating test fixtures
-	testImplementation 'com.squareup.okhttp3:mockwebserver:4.11.+' // Mocking WebClient calls
+	testImplementation 'org.instancio:instancio-junit:5.+' // Creating test fixtures
+	testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.+' // Mocking WebClient calls
 
 	// Arch Unit
-	testImplementation 'com.tngtech.archunit:archunit-junit5:1.0.1'
+	testImplementation 'com.tngtech.archunit:archunit-junit5:1.3.+'
 
 	// Wiremock
-	testImplementation "com.github.tomakehurst:wiremock-standalone:3.0.0-beta-8"
+	testImplementation 'org.wiremock:wiremock-standalone:3.9.+'
+
+	// TODO Fix runtime issue with Find Security Bugs
+//	spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.13.+'
 }
 
 tasks.named('test') {
