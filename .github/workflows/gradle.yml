@@ -11,7 +11,7 @@ on:
   push:
     branches: [ "develop" ]
   pull_request:
-    branches: [ "develop", "feature/**", "story/**", "bugfix/**" ]
+    branches: [ "develop", "feature/**", "story/**", "bugfix/**", "devops/**" ]
 
 permissions:
   checks: write
