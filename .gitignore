@@ -42,3 +42,6 @@ lib/
 
 ### Wiremock JAR ###
 wiremock*.jar
+
+### Misc
+.plans/
