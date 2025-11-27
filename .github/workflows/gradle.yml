@@ -38,12 +38,12 @@ jobs:
         gradle-version: wrapper
 
     - name: Build and Unit Test with Gradle
-      run: gradle spotlessCheck test spotbugsMain pmdMain pmdTest
+      run: ./gradlew spotlessCheck test spotbugsMain pmdMain pmdTest
 
     - name: Run Integration Tests
       env:
         TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
-      run: gradle integrationTest
+      run: ./gradlew integrationTest
 
     - name: SpotBugs Report
       uses: lcollins/spotbugs-github-action@v3.0.0

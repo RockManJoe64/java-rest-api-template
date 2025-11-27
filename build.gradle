@@ -63,6 +63,7 @@ dependencies {
 	testImplementation 'org.mockito:mockito-core:5.+'
 	testImplementation 'org.instancio:instancio-junit:5.+' // Creating test fixtures
 	testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.+' // Mocking WebClient calls
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // Required for Gradle test execution
 
 	// Arch Unit
 	testImplementation 'com.tngtech.archunit:archunit-junit5:1.3.+'

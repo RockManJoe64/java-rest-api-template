@@ -45,3 +45,4 @@ wiremock*.jar
 
 ### Misc
 .plans/
+.attach_*
