@@ -1,0 +1,5 @@
+# Set the default behavior for all files
+* text=auto
+
+# Force ALL files (except binaries) to use LF in the repository
+* text eol=lf
